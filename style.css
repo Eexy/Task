@@ -1,83 +1,63 @@
-:root{
-    --radius: 3px;
+:root {
+  --radius: 3px;
 }
 
-*{
-    margin: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  box-sizing: border-box;
 }
 
-html, body{
-    height: 100%;
-    font-family: 'Roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+html,
+body {
+  height: 100%;
+  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body{
-    padding: 1rem;
-    max-width: 90%;
-    margin: 0 auto;
-    background: #f9f9f9;
+body {
+  padding: 1rem;
+  max-width: 90%;
+  margin: 0 auto;
+  background: #f9f9f9;
 }
 
-form{
-    display: flex;
-    width: 100%;
+form {
+  display: flex;
+  width: 100%;
 }
 
-button{
-    cursor: pointer;
+button {
+  cursor: pointer;
 }
 
-input{
-    display: block;
-    padding: 1rem;
-    font-size: 1rem;
-    border: 1px solid transparent;
-    border-radius: var(--radius);
-    background: rgba(0, 0, 0, 0.11);
-    outline: none;
-    flex-grow: 1;
+input {
+  display: block;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: rgba(0, 0, 0, 0.11);
+  outline: none;
+  flex-grow: 1;
 }
 
-input:focus{
-    background:  rgba(70, 70, 70, 0.062);
+input:focus {
+  background: rgba(70, 70, 70, 0.062);
 }
 
-.submit-btn{
-    background: rgb(16, 52, 209);
-    color: white;
-    border: none;
-    border-radius: var(--radius);
-    margin-left: 1rem;
-    padding: 1rem 1.3rem;
+.submit-btn {
+  background: rgb(16, 52, 209);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  margin-left: 1rem;
+  padding: 1rem 1.3rem;
 }
 
-.submit-btn:hover{
-    background:  rgb(19, 57, 230);
+.submit-btn:hover {
+  background: rgb(19, 57, 230);
 }
 
-.tasks-list{
-    list-style: none;
-    padding: 0;
-}
-
-.task{
-    display: flex;
-    align-items: center;
-    padding: 0.8rem 1rem;
-    border-radius: var(--radius);
-    margin: 1rem 0;
-    background: white;
-}
-
-.task-title{
-    color: black;
-}
-
-.checkbox{
-    padding-right: 1rem;
-}
-
-.task-title{
-    font-weight: normal;
+.tasks-list {
+  list-style: none;
+  padding: 0;
 }
