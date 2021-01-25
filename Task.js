@@ -12,6 +12,7 @@ export default class Task extends HTMLElement {
 
   connectedCallback() {
     this.render();
+    // this.taskList.add(this);
   }
 
   disconnectedCallback() {
@@ -68,7 +69,7 @@ export default class Task extends HTMLElement {
         }
       </style>
         <div class='checkbox'>
-          <input type='radio'>
+          <input type='checkbox'>
         </div>
         <h3 class='task-title'>${this.title}</h3>
         <button class='delete-btn'>Delete</button>
@@ -85,7 +86,7 @@ export default class Task extends HTMLElement {
   }
 
   delete() {
-    this.taskList.removeChild(this);
+    this.taskList.deleteTask(this);
   }
 }
 
