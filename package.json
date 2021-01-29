@@ -2,9 +2,9 @@
   "name": "task",
   "version": "1.0.0",
   "description": "- [ ] create custom web components\r - [ ] add priority level\r - [ ] add date picker\r - [ ] search in created task\r - [ ] add the possibility to create project\r - [ ] create better design\r - [ ] deploy on heroku",
-  "main": "Task.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nodemon src/server/app.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,10 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-import": "^2.22.1",
+    "nodemon": "^2.0.7",
     "prettier": "2.2.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
