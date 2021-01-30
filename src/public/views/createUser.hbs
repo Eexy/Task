@@ -1,0 +1,22 @@
+<div class="flex-wrapper flex-center">
+  <div class="card">
+    <div class="card__header">
+      <h1 class="card__title">Create Account</h1>
+    </div>
+    <div class="card__body">
+      <form action="http://localhost:3000/users/login" method="POST" class="auth-form">
+        <div class="form__row">
+          <label for="email" class="form__label">Mail :</label>
+          <input type="email" name="email" id="email" class="form__input" placeholder="Enter your email">
+        </div>
+        <div class="form__row">
+          <label for="pwd" class="form__label">Password :</label>
+          <input type="password" name="pwd" id="pwd" class="form__input" placeholder="Enter your password">
+        </div>
+        <div class="form__row">
+          <button type="button" id="login-btn" class="form__submit full-btn">Create Account</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

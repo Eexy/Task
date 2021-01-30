@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const hbs = require('express-handlebars');
+const userRouter = require('./routers/user');
 
 const app = express();
 const PORT = 3000;
@@ -13,14 +14,15 @@ app.engine('.hbs', hbs({ extname: '.hbs' }));
 app.set('view engine', '.hbs');
 app.set('views', viewsPath);
 
-// set path to public directory
+// configure public directory
 const publicDirectory = path.join(__dirname, '../public');
-
-// configure public file
 app.use(express.static(publicDirectory));
 
+// configure routers
+app.use(userRouter);
+
 app.get('', (req, res) => {
-  res.render('index', { title: 'homepage' });
+  res.send('<h1>Hellow world</h1>');
 });
 
 app.listen(PORT, () => {

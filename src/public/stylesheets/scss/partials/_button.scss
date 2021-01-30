@@ -1,0 +1,14 @@
+@use './variables';
+
+button{
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: variables.$radius-input;
+}
+
+.full-btn{
+  width: 100%;
+}
+

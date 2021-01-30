@@ -1,64 +1,97 @@
-:root {
-  --radius: 3px;
+.card {
+  padding: 1rem;
+  border-radius: 0.3rem;
+  box-shadow: 0 0 0.9rem rgba(0, 0, 0, 0.178);
+  min-width: 300px;
+}
+
+.card__header {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #b3b3b3;
+}
+
+.card__title {
+  color: #333333;
+}
+
+.card__separator {
+  height: 1px;
+  border-top: 1px solid black;
+}
+
+@media screen and (min-width: 650px) {
+  .card {
+    width: 350px;
+  }
+}
+button {
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+}
+
+.full-btn {
+  width: 100%;
+}
+
+.form__row {
+  padding: 0.5rem 0;
+}
+
+.form__label,
+.form__input {
+  display: block;
+}
+
+.form__label {
+  padding: 0.5rem 0;
+}
+
+.form__input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #e4e4e4;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  background: #e4e4e4;
+}
+.form__input:hover {
+  border-color: #0077b6ff;
+}
+.form__input:active, .form__input:focus {
+  border-color: #0077b6ff;
+  box-shadow: 0 0 0px 3px #b6e6ff;
+  background: white;
+}
+
+.form__submit {
+  background: #03045eff;
+  color: white;
 }
 
 * {
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 html,
 body {
   height: 100%;
-  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body {
-  padding: 1rem;
-  max-width: 90%;
-  margin: 0 auto;
-  background: #f9f9f9;
-}
-
-form {
+.flex-wrapper {
   display: flex;
-  width: 100%;
-}
-
-button {
-  cursor: pointer;
-}
-
-input {
-  display: block;
   padding: 1rem;
-  font-size: 1rem;
-  border: 1px solid transparent;
-  border-radius: var(--radius);
-  background: rgba(0, 0, 0, 0.11);
-  outline: none;
-  flex-grow: 1;
 }
 
-input:focus {
-  background: rgba(70, 70, 70, 0.062);
+.flex-center {
+  align-items: center;
+  justify-content: center;
 }
 
-.submit-btn {
-  background: rgb(16, 52, 209);
-  color: white;
-  border: none;
-  border-radius: var(--radius);
-  margin-left: 1rem;
-  padding: 1rem 1.3rem;
-}
-
-.submit-btn:hover {
-  background: rgb(19, 57, 230);
-}
-
-.tasks-list {
-  list-style: none;
-  padding: 0;
-  
-}
+/*# sourceMappingURL=style.css.map */
