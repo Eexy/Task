@@ -18,6 +18,8 @@ app.set('views', viewsPath);
 const publicDirectory = path.join(__dirname, '../public');
 app.use(express.static(publicDirectory));
 
+app.use(express.urlencoded({ extended: true }));
+
 // configure routers
 app.use(userRouter);
 
