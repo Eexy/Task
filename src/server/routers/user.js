@@ -3,24 +3,16 @@ const User = require('../database/models/userModel');
 
 const router = express.Router();
 
-const users = [];
-
 router.get('/users/login', (req, res) => {
   res.render('login', { title: 'Login' });
 });
 
-router.post('/users/login', (req, res) => {
+router.post('/users/login', async (req, res) => {
   // send back to the dashboard if the user exist
-  const user = req.body;
-  let exist = false;
+  const user = await User.findOne(req.body);
 
-  users.forEach((temp) => {
-    if (temp.email === user.email && temp.pwd === user.pwd) {
-      exist = true;
-    }
-  });
-
-  if (!exist) {
+  // if user doesn't exit we send back an error
+  if (!user) {
     res.send({ error: "User doesn't exist" });
   }
 
@@ -37,20 +29,15 @@ router.post('/users/createUser', async (req, res) => {
     if the user already exist send back an error
     else redirect to the dashboard
   */
-  const user = new User(req.body);
-  let exist = false;
+  let user = await User.findOne(req.body);
 
-  users.forEach((temp) => {
-    if (temp.email === user.email && temp.pwd === user.pwd) {
-      exist = true;
-    }
-  });
-
-  if (exist) {
+  if (user) {
     res.send({ error: 'User already exist' });
   }
 
+  user = new User(req.body);
   await user.save();
+
   res.redirect('/tasks');
 });
 
