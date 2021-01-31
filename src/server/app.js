@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const hbs = require('express-handlebars');
 const userRouter = require('./routers/user');
+const taskRouter = require('./routers/tasks');
 
 const app = express();
 const PORT = 3000;
@@ -22,6 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // configure routers
 app.use(userRouter);
+app.use(taskRouter);
 
 app.get('', (req, res) => {
   res.send('<h1>Hellow world</h1>');
