@@ -1,4 +1,5 @@
 const express = require('express');
+const User = require('../database/models/userModel');
 
 const router = express.Router();
 
@@ -30,13 +31,13 @@ router.get('/users/createUser', (req, res) => {
   res.render('createUser', { title: 'Create Account' });
 });
 
-router.post('/users/createUser', (req, res) => {
+router.post('/users/createUser', async (req, res) => {
   /*
     Create a new user and add it in the database
     if the user already exist send back an error
     else redirect to the dashboard
   */
-  const user = req.body;
+  const user = new User(req.body);
   let exist = false;
 
   users.forEach((temp) => {
@@ -49,6 +50,7 @@ router.post('/users/createUser', (req, res) => {
     res.send({ error: 'User already exist' });
   }
 
+  await user.save();
   res.redirect('/tasks');
 });
 

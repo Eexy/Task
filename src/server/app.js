@@ -4,6 +4,9 @@ const hbs = require('express-handlebars');
 const userRouter = require('./routers/user');
 const taskRouter = require('./routers/tasks');
 
+// connect to the database
+require('./database/db');
+
 const app = express();
 const PORT = 3000;
 
