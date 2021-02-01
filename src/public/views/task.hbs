@@ -1,1 +1,37 @@
-<h1>Welcome to your dashboard</h1>
+<form>
+  <div class="form__row">
+    <label for="title" class="form__label">Titre</label>
+    <input type="text" class="form__input" name="title" required>
+  </div>
+  <div class="form__row">
+    <button type="submit" id="create-task" class="form__submit full-btn">ajouter</button>
+  </div>
+</form>
+
+<ul class="task-list">
+
+</ul>
+
+<script type="module">
+  const form = document.querySelector('form');
+  const input = document.querySelector('input');
+  const submitBtn = document.querySelector('button');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+
+    fetch('http://localhost:3000/tasks', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ title: input.value })
+    }).then((res) => {
+      return res.json();
+    }).then((res) => {
+      console.log(res)
+    });
+  })
+</script>

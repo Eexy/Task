@@ -23,6 +23,7 @@ const publicDirectory = path.join(__dirname, '../public');
 app.use(express.static(publicDirectory));
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // configure routers
 app.use(userRouter);
