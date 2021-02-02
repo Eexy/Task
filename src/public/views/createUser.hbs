@@ -1,22 +1,24 @@
-<div class="flex-wrapper flex-center">
-  <div class="card">
-    <div class="card__header">
-      <h1 class="card__title">Create Account</h1>
+<main class="p-3">
+  <div class="rounded flex shadow-xl flex-col p-4 w-3/5 mx-auto">
+    <div class="">
+      <h1 class="text-4xl text-gray-900">Create Account</h1>
     </div>
-    <div class="card__body">
+    <div class="">
       <form action="http://localhost:3000/users/createUser" method="POST" class="auth-form">
-        <div class="form__row">
-          <label for="email" class="form__label">Mail :</label>
-          <input type="email" name="email" id="email" class="form__input" placeholder="Enter your email" required>
+        <div class="py-1.5">
+          <label for="email" class="block pb-1.5">Mail :</label>
+          <input type="email" name="email" id="email"
+            class="outline-none focus:ring w-full py-1 px-2 border-solid border-gray-400 border-2 rounded block focus:border-blue-500 hover:border-blue-500"
+            placeholder="Enter your email" required>
         </div>
-        <div class="form__row">
-          <label for="pwd" class="form__label">Password :</label>
-          <input type="password" name="password" id="pwd" class="form__input" placeholder="Enter your password" required>
+        <div class="py-1.5">
+          <label for="pwd" class="block pb-1.5">Password :</label>
+          <input type="password" name="password" id="pwd"
+            class="outline-none focus:ring w-full py-1 px-2 border-solid border-gray-400 border-2 rounded block focus:border-blue-500 hover:border-blue-500"
+            placeholder="Enter your password" required>
         </div>
-        <div class="form__row">
-          <button type="submit" id="login-btn" class="form__submit full-btn">Create Account</button>
-        </div>
+        <button type="submit" id="login-btn" class="p-2 hover:bg-blue-600 rounded w-full text-white outline-none bg-blue-700 my-2 cursor-pointer">Create Account</button>
       </form>
     </div>
   </div>
-</div>
+</main>

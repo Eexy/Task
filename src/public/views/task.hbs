@@ -1,16 +1,18 @@
-<form>
-  <div class="form__row">
-    <label for="title" class="form__label">Titre</label>
-    <input type="text" class="form__input" name="title" required>
-  </div>
-  <div class="form__row">
-    <button type="submit" id="create-task" class="form__submit full-btn">ajouter</button>
-  </div>
-</form>
+<main class="w-8/12 flex flex-col mx-auto">
+  <form class="flex p-3 items-center block">
+    <div class="flex-grow">
+      <input type="text"
+        class="outline-none focus:ring w-full py-2 px-2 border-solid border-gray-300 border-2 rounded block focus:border-blue-500 hover:border-blue-500 "
+        name="title" placeholder="Enter task title" required>
+    </div>
+    <button type="submit" id="create-task"
+      class="block bg-blue-700 text-white rounded py-2 px-4 rounded hover:bg-blue-600 cursor-pointer ml-1.5">Add</button>
+  </form>
+  <ul class="task-list"></ul>
+</main>
 
-<ul class="task-list">
 
-</ul>
+
 
 <script type="module">
   const form = document.querySelector('form');
