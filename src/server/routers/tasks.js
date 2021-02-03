@@ -5,10 +5,12 @@ const auth = require('../middlewares/auth');
 const router = express.Router();
 
 router.get('/tasks', auth, (req, res) => {
+  // console.log(req.cookies);
   if (req.user) {
-    console.log(req.user);
     res.render('task', { title: 'dashboard' });
   }
+
+  res.redirect('/');
 });
 
 router.post('/tasks', async (req, res) => {

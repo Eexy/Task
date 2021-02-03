@@ -1,5 +1,6 @@
 const express = require('express');
 const User = require('../database/models/user');
+const auth = require('../middlewares/auth');
 
 const router = express.Router();
 
@@ -12,13 +13,25 @@ router.post('/users/login', async (req, res) => {
   try {
     const user = await User.findByCredentials(
       req.body.email,
-      req.body.password,
+      req.body.password
     );
     const token = user.generateAuthToken();
     res.cookie('jwt', token, { httpOnly: true });
     res.redirect('/tasks');
   } catch (e) {
+    // if the user doesn't exist in the database send back an error
     res.status(400).send(e);
+  }
+});
+
+router.get('/users/logout', auth, (req, res) => {
+  try {
+    const { user } = req;
+    user.tokens = [];
+    res.clearCookie('jwt');
+    res.redirect('/users/login');
+  } catch (e) {
+    res.status(401).send({ error: e });
   }
 });
 
@@ -31,7 +44,7 @@ router.post('/users/createUser', async (req, res) => {
     // If we found user in database we redirect to his dashboard
     const user = await User.findByCredentials(
       req.body.email,
-      req.body.password,
+      req.body.password
     );
     const token = await user.generateAuthToken();
     res.cookie('jwt', token, { httpOnly: true, maxAge: 9000000000 });

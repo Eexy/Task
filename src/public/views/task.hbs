@@ -1,4 +1,10 @@
 <main class="w-8/12 flex flex-col mx-auto">
+  <a href="http://localhost:3000/users/logout">
+    <button
+      class="logout-btn block bg-blue-700 text-white rounded py-2 px-4 rounded hover:bg-blue-600 cursor-pointer ml-1.5">
+      logout
+    </button>
+  </a>
   <form class="flex p-3 items-center block">
     <div class="flex-grow">
       <input type="text"
@@ -14,10 +20,13 @@
 
 
 
+
 <script type="module">
   const form = document.querySelector('form');
   const input = document.querySelector('input');
   const submitBtn = document.querySelector('button');
+
+  const logoutbtn = document.querySelector('.logout-btn');
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();

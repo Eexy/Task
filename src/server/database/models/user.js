@@ -32,7 +32,7 @@ const schema = new mongoose.Schema({
 
 schema.statics.findByCredentials = async (mail, pwd) => {
   const user = await User.findOne({ mail });
-  
+
   if (!user) {
     throw new Error('Unable to find user');
   }

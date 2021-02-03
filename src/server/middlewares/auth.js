@@ -7,11 +7,11 @@ const User = require('../database/models/user');
 const auth = async (req, res, next) => {
   try {
     const tokenCookie = req.cookie;
-    const user = await User.findOne({ tokenCookie });
+    const user = await User.findOne({ 'tokens.token': tokenCookie });
     req.user = user;
     next();
   } catch (e) {
-    res.status(401).send({ error: "User doesn't exist" });
+    res.status(401).send({ error: 'You need to be logged to access the page' });
   }
 };
 
