@@ -38,7 +38,7 @@ schema.statics.findByCredentials = async (mail, pwd) => {
   }
 
   const isMatch = await bcrypt.compare(pwd, user.password);
-  
+
   if (!isMatch) {
     throw new Error('Unable to login');
   }
@@ -54,6 +54,16 @@ schema.methods.generateAuthToken = async function () {
   await user.save();
 
   return token;
+};
+
+schema.methods.toJson = function () {
+  const user = this;
+  const userObject = user.toObject();
+
+  delete userObject.password;
+  delete userObject.tokens;
+
+  return userObject;
 };
 
 schema.pre('save', async function (next) {

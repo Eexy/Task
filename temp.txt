@@ -1,13 +1,7 @@
-une fonction qui va chercher l'utilisateur dans la base de donnée
-  - si ça le trouve on creer un nouveau token qu'on assigne au cookie
-  - sinon on renvoie une erreur
+routes :
 
-creation d'un utilisateur
-  - si l'utilisateur est deja dans la base de donnée renvoyer une erreur
-  - l'enregistre dans la base de donnée
-  - genere un token
-  - redirige vers son dashboard
-
-fonction auth
-  - compare le token enregistré dans les cookies
-  - si il le trouve il peut passer
+  - login
+    - GET : renvoyer le formulaire
+    - POST :
+        verifie si l'utilisateur existe dans la base de donnée (fetch) -> creer une route pour la recherche d'un utilisateur
+        sinon se connecter

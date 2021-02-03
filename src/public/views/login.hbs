@@ -21,8 +21,36 @@
           class="p-2 hover:bg-blue-600 rounded w-full text-white outline-none bg-blue-700 my-2 cursor-pointer">Login</button>
       </form>
       <a href="http://localhost:3000/users/createUser">
-        <button id="create-user-btn" class="p-2 hover:bg-gray-600 bg-gray-800 w-full text-white rounded cursor-pointer">Create User</button>
+        <button id="create-user-btn"
+          class="p-2 hover:bg-gray-600 bg-gray-800 w-full text-white rounded cursor-pointer">Create User</button>
       </a>
     </div>
   </div>
 </main>
+
+<script>
+  const form = document.querySelector('form');
+  const email = document.querySelector('#email');
+  const password = document.querySelector('#pwd');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const params = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email: email.value, password: password.value })
+    }
+
+    fetch('http://localhost:3000/users/login', params).then((res) => {
+      return res.json();
+    }).then(res => {
+      if(!res.error){
+        window.location.href = 'http://localhost:3000/tasks';
+      }
+    });
+
+  })
+</script>

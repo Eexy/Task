@@ -13,14 +13,14 @@ router.post('/users/login', async (req, res) => {
   try {
     const user = await User.findByCredentials(
       req.body.email,
-      req.body.password,
+      req.body.password
     );
     const token = await user.generateAuthToken();
     res.cookie('jwt', token, { httpOnly: true });
-    res.redirect('/tasks');
+    res.send(user.toJson());
   } catch (e) {
     // if the user doesn't exist in the database send back an error
-    res.status(400).send(e);
+    res.status(400).send({ error: 'unable to find the user' });
   }
 });
 
