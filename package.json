@@ -25,8 +25,13 @@
     "prettier": "2.2.1"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cookie-session": "^1.4.0",
+    "crypto-js": "^4.0.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.14",
     "validator": "^13.5.2"
   }

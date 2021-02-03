@@ -8,15 +8,18 @@ router.get('/users/login', (req, res) => {
 });
 
 router.post('/users/login', async (req, res) => {
-  // send back to the dashboard if the user exist
-  const user = await User.findOne(req.body);
-
-  // if user doesn't exit we send back an error
-  if (!user) {
-    res.send({ error: "User doesn't exist" });
+  // try to find the user
+  try {
+    const user = await User.findByCredentials(
+      req.body.email,
+      req.body.password,
+    );
+    const token = user.generateAuthToken();
+    res.cookie('jwt', token, { httpOnly: true });
+    res.redirect('/tasks');
+  } catch (e) {
+    res.status(400).send(e);
   }
-
-  res.redirect('/tasks');
 });
 
 router.get('/users/createUser', (req, res) => {
@@ -24,21 +27,22 @@ router.get('/users/createUser', (req, res) => {
 });
 
 router.post('/users/createUser', async (req, res) => {
-  /*
-    Create a new user and add it in the database
-    if the user already exist send back an error
-    else redirect to the dashboard
-  */
-  let user = await User.findOne(req.body);
-
-  if (user) {
-    res.send({ error: 'User already exist' });
+  try {
+    // If we found user in database we redirect to his dashboard
+    const user = await User.findByCredentials(
+      req.body.email,
+      req.body.password,
+    );
+    const token = await user.generateAuthToken();
+    res.cookie('jwt', token, { httpOnly: true, maxAge: 9000000000 });
+    res.redirect('/tasks');
+  } catch (e) {
+    // If we don't find a user we created a new one
+    const user = new User(req.body);
+    const token = await user.generateAuthToken();
+    res.cookie('jwt', token, { httpOnly: true, maxAge: 9000000000 });
+    res.redirect('/tasks');
   }
-
-  user = new User(req.body);
-  await user.save();
-
-  res.redirect('/tasks');
 });
 
 module.exports = router;

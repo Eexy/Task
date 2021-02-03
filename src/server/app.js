@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const hbs = require('express-handlebars');
+const cookieParser = require('cookie-parser');
+require('dotenv').config();
 const userRouter = require('./routers/user');
 const taskRouter = require('./routers/tasks');
 
@@ -8,7 +10,7 @@ const taskRouter = require('./routers/tasks');
 require('./database/db');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 5000;
 
 // set views and partials path
 const viewsPath = path.join(__dirname, '../public/views');
@@ -24,6 +26,7 @@ app.use(express.static(publicDirectory));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 
 // configure routers
 app.use(userRouter);

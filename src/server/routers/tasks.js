@@ -1,10 +1,14 @@
 const express = require('express');
 const Task = require('../database/models/task');
+const auth = require('../middlewares/auth');
 
 const router = express.Router();
 
-router.get('/tasks', (req, res) => {
-  res.render('task', { title: 'dashboard' });
+router.get('/tasks', auth, (req, res) => {
+  if (req.user) {
+    console.log(req.user);
+    res.render('task', { title: 'dashboard' });
+  }
 });
 
 router.post('/tasks', async (req, res) => {
