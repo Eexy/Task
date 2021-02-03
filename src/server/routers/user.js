@@ -13,9 +13,9 @@ router.post('/users/login', async (req, res) => {
   try {
     const user = await User.findByCredentials(
       req.body.email,
-      req.body.password
+      req.body.password,
     );
-    const token = user.generateAuthToken();
+    const token = await user.generateAuthToken();
     res.cookie('jwt', token, { httpOnly: true });
     res.redirect('/tasks');
   } catch (e) {
@@ -24,10 +24,11 @@ router.post('/users/login', async (req, res) => {
   }
 });
 
-router.get('/users/logout', auth, (req, res) => {
+router.get('/users/logout', auth, async (req, res) => {
   try {
     const { user } = req;
     user.tokens = [];
+    await user.save();
     res.clearCookie('jwt');
     res.redirect('/users/login');
   } catch (e) {

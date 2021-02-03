@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
-const crypto = require('crypto-js');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 const schema = new mongoose.Schema({
@@ -31,14 +31,14 @@ const schema = new mongoose.Schema({
 });
 
 schema.statics.findByCredentials = async (mail, pwd) => {
-  const user = await User.findOne({ mail });
+  const user = await User.findOne({ email: mail });
 
-  if (!user) {
+  if (user === null) {
     throw new Error('Unable to find user');
   }
 
-  const isMatch = user.password === crypto.encrypt(pwd, process.env.PWD);
-
+  const isMatch = await bcrypt.compare(pwd, user.password);
+  
   if (!isMatch) {
     throw new Error('Unable to login');
   }
@@ -56,11 +56,11 @@ schema.methods.generateAuthToken = async function () {
   return token;
 };
 
-schema.pre('save', function (next) {
+schema.pre('save', async function (next) {
   const user = this;
 
   if (user.isModified('password')) {
-    user.password = crypto.AES.encrypt(user.password, process.env.PWD);
+    user.password = await bcrypt.hash(user.password, 10);
   }
 
   next();
