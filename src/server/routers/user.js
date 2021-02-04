@@ -5,7 +5,7 @@ const auth = require('../middlewares/auth');
 const router = express.Router();
 
 router.get('/users/login', (req, res) => {
-  res.render('login', { title: 'Login' });
+  res.render('login', { title: 'Login', connected: false });
 });
 
 router.post('/users/login', async (req, res) => {
@@ -49,13 +49,13 @@ router.post('/users/createUser', async (req, res) => {
     );
     const token = await user.generateAuthToken();
     res.cookie('jwt', token, { httpOnly: true, maxAge: 9000000000 });
-    res.redirect('/tasks');
+    res.redirect('/dashboard');
   } catch (e) {
     // If we don't find a user we created a new one
     const user = new User(req.body);
     const token = await user.generateAuthToken();
     res.cookie('jwt', token, { httpOnly: true, maxAge: 9000000000 });
-    res.redirect('/tasks');
+    res.redirect('/dashboard');
   }
 });
 
@@ -67,7 +67,7 @@ router.get('/dashboard', auth, (req, res) => {
       return res.redirect('/users/login');
     }
 
-    res.status(200).render('dashboard', { title: 'Dashboard' });
+    res.status(200).render('dashboard', { title: 'Dashboard', connected: true });
   } catch (e) {
     res.redirect('/users/login');
   }

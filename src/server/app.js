@@ -33,7 +33,7 @@ app.use(userRouter);
 app.use(taskRouter);
 
 app.get('/', (req, res) => {
-  res.send('<h1>Hellow world</h1>');
+  res.render('index', { title: 'Homepage', connected: false });
 });
 
 app.listen(PORT, () => {
