@@ -59,4 +59,18 @@ router.post('/users/createUser', async (req, res) => {
   }
 });
 
+router.get('/dashboard', auth, (req, res) => {
+  try {
+    const { user } = req;
+
+    if (!user) {
+      return res.redirect('/users/login');
+    }
+
+    res.status(200).render('dashboard', { title: 'Dashboard' });
+  } catch (e) {
+    res.redirect('/users/login');
+  }
+});
+
 module.exports = router;
