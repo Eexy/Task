@@ -87,7 +87,7 @@ export default class Task extends HTMLElement {
         }
       </style>
         <div class='checkbox'>
-          <input type='checkbox'>
+          <input type='checkbox' ${((this.isCompleted) ? 'checked' : '')}>
         </div>
         <h3 class='task-title'>${this.title}</h3>
         <button class='delete-btn'>Delete</button>
