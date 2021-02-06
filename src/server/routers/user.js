@@ -53,13 +53,13 @@ router.post('/users/createUser', async (req, res) => {
   try {
     // If the user already exist we send back an error
     await User.findByCredentials(req.body.email, req.body.password);
-    res.send({ message: 'user already exist' });
+    res.send({ error: 'user already exist' });
   } catch (e) {
     // If we don't find a user we created a new one
     const user = new User(req.body);
     const token = await user.generateAuthToken();
     res.cookie('jwt', token, { httpOnly: true, maxAge: 9000000000 });
-    res.send({ user, token });
+    res.send(user.toJson());
   }
 });
 
