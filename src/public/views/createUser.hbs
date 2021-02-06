@@ -5,7 +5,7 @@
     </div>
     <div class="">
       <p class="error p-2 hidden text-red-900 bg-red-300 rounded">Error: <span class="error-msg"></span></p>
-      <form action="http://localhost:3000/users/createUser" method="POST" class="auth-form">
+      <form action="" method="POST" class="auth-form">
         <div class="py-1.5">
           <label for="email" class="block pb-1.5">Mail :</label>
           <input type="email" name="email" id="email" minlength="8"
@@ -59,12 +59,13 @@
       }
 
       fetch('http://localhost:3000/users/createUser', params)
-      .then(res => res.json)
+      .then(res => res.json())
       .then((res) => {
-        if(!res.error){
-          window.location.href = 'http://localhost:3000/dashboard';
-        }else{
+        if(res.error){
+          error.style.display = "block";
           errorMsg.textContent = 'User already exist';
+        }else{
+          window.location.href = 'http://localhost:3000/dashboard';
         }
       })
     }

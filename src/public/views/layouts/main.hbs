@@ -11,5 +11,25 @@
 <body>
   {{>header}}
   {{{body}}}
+
+  <script>
+    const logout = document.querySelector('#logout');
+
+    if(logout){
+      logout.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        fetch('http://localhost:3000/users/logout')
+          .then(res => res.json)
+          .then(res => {
+            if(!res.error){
+              window.location.href = "http://localhost:3000/users/login";
+            }else{
+              console.log(error);
+            }
+          });
+      })
+    }
+  </script>
 </body>
 </html>
