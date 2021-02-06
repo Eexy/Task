@@ -9,8 +9,9 @@ router.get('/tasks', auth, async (req, res) => {
   try {
     const { user } = req;
     const tasks = await Task.find({ owner: user._id });
-
-    res.send(tasks);
+    const json = tasks.map((task) => task.toJson());
+    
+    res.send(json);
   } catch (e) {
     res.send({ error: e });
   }

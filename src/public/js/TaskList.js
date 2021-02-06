@@ -1,4 +1,6 @@
-export default class TaskList extends HTMLElement {
+import Task from '../js/Task.js';
+
+class TaskList extends HTMLElement {
   constructor() {
     super();
     this.nbTasks = null;
@@ -6,9 +8,17 @@ export default class TaskList extends HTMLElement {
     this.attachShadow({ mode: 'open' });
   }
 
-  connectedCallback() {
+  async connectedCallback() {
+    await this.fetchTask();
     this.render();
     this.nbTasks = 0;
+  }
+
+  async fetchTask() {
+    const res = await fetch('http://localhost:3000/tasks');
+    const json = await res.json();
+
+    this.tasksList = json;
   }
 
   render() {
@@ -32,9 +42,14 @@ export default class TaskList extends HTMLElement {
       <p class='no-task-msg'>You have no task to finish</p>
       <div class='tasks-list'></div>
     `;
+
+    this.tasksList.forEach((task) => {
+      const temp = new Task(task._id, task.title, task.completed, this);
+      this.add(temp);
+    });
   }
 
-  add(task) {
+  async add(task) {
     this.nbTasks += 1;
     const { shadowRoot } = this;
     shadowRoot.querySelector('.tasks-list').appendChild(task);

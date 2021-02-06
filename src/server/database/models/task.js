@@ -22,7 +22,7 @@ schema.methods.toJson = function () {
   const task = this;
   const taskObject = task.toObject();
 
-  delete task.owner;
+  delete taskObject.owner;
 
   return taskObject;
 };

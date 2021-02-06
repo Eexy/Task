@@ -1,9 +1,9 @@
 export default class Task extends HTMLElement {
-  constructor(title, priority, taskList) {
+  constructor(id, title, completed, taskList) {
     super();
+    this.id = id;
     this.title = title;
-    this.isCompleted = false;
-    this.priority = priority;
+    this.isCompleted = completed;
     this.attachShadow({ mode: 'open' });
     this.taskList = taskList;
 
@@ -13,7 +13,6 @@ export default class Task extends HTMLElement {
 
   connectedCallback() {
     this.render();
-    // this.taskList.add(this);
   }
 
   disconnectedCallback() {
@@ -91,7 +90,6 @@ export default class Task extends HTMLElement {
           <input type='checkbox'>
         </div>
         <h3 class='task-title'>${this.title}</h3>
-        <div class='priority-tag ${this.priority}'>${this.priority}</div>
         <button class='delete-btn'>Delete</button>
     `;
 
@@ -101,12 +99,31 @@ export default class Task extends HTMLElement {
       .addEventListener('click', this.delete);
   }
 
-  complete() {
-    this.isCompleted = !this.isCompleted;
+  async complete() {
+    const params = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ completed: !this.isCompleted }),
+    };
+    const res = await fetch(`http://localhost:3000/tasks/${this.id}`, params);
+    const json = await res.json();
+
+    if (!json.error) {
+      this.isCompleted = !this.isCompleted;
+    }
   }
 
-  delete() {
-    this.taskList.deleteTask(this);
+  async delete() {
+    const res = await fetch(`http://localhost:3000/tasks/${this.id}`, {
+      method: 'DELETE',
+    });
+    const json = await res.json();
+
+    if (!json.error) {
+      this.taskList.deleteTask(this);
+    }
   }
 }
 
