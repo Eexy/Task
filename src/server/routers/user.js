@@ -24,15 +24,24 @@ router.post('/users/login', async (req, res) => {
   }
 });
 
+// Renvoie l'utilisateur
+router.get('/users/me', auth, (req, res) => {
+  try {
+    res.send(req.user.toJson());
+  } catch (e) {
+    res.send({ error: 'you have to connected' });
+  }
+});
+
 router.get('/users/logout', auth, async (req, res) => {
   try {
     const { user } = req;
     user.tokens = [];
     await user.save();
     res.clearCookie('jwt');
-    res.redirect('/users/login');
+    res.send({ message: 'Log out successful' });
   } catch (e) {
-    res.status(401).send({ error: e });
+    res.status(401).send({ error: 'you need to be connected before' });
   }
 });
 
@@ -42,20 +51,15 @@ router.get('/users/createUser', (req, res) => {
 
 router.post('/users/createUser', async (req, res) => {
   try {
-    // If we found user in database we redirect to his dashboard
-    const user = await User.findByCredentials(
-      req.body.email,
-      req.body.password
-    );
-    const token = await user.generateAuthToken();
-    res.cookie('jwt', token, { httpOnly: true, maxAge: 9000000000 });
-    res.redirect('/dashboard');
+    // If the user already exist we send back an error
+    await User.findByCredentials(req.body.email, req.body.password);
+    res.send({ message: 'user already exist' });
   } catch (e) {
     // If we don't find a user we created a new one
     const user = new User(req.body);
     const token = await user.generateAuthToken();
     res.cookie('jwt', token, { httpOnly: true, maxAge: 9000000000 });
-    res.redirect('/dashboard');
+    res.send({ user, token });
   }
 });
 
@@ -67,7 +71,9 @@ router.get('/dashboard', auth, (req, res) => {
       return res.redirect('/users/login');
     }
 
-    res.status(200).render('dashboard', { title: 'Dashboard', connected: true });
+    res
+      .status(200)
+      .render('dashboard', { title: 'Dashboard', connected: true });
   } catch (e) {
     res.redirect('/users/login');
   }

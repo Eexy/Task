@@ -6,7 +6,26 @@ const schema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  completed: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    path: true,
+  },
 });
+
+schema.methods.toJson = function () {
+  const task = this;
+  const taskObject = task.toObject();
+
+  delete task.owner;
+
+  return taskObject;
+};
 
 const Task = mongoose.model('task', schema);
 
