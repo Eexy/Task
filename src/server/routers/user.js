@@ -45,11 +45,11 @@ router.get('/users/logout', auth, async (req, res) => {
   }
 });
 
-router.get('/users/createUser', (req, res) => {
-  res.render('createUser', { title: 'Create Account' });
+router.get('/users/signup', (req, res) => {
+  res.render('signup', { title: 'signup' });
 });
 
-router.post('/users/createUser', async (req, res) => {
+router.post('/users/signup', async (req, res) => {
   let user = await User.findOne({ email: req.body.email });
 
   if (user) {

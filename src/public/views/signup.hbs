@@ -58,7 +58,7 @@
         body: JSON.stringify({ email: mail, password })
       }
 
-      fetch('http://localhost:3000/users/createUser', params)
+      fetch('http://localhost:3000/users/signup', params)
       .then(res => res.json())
       .then((res) => {
         if(res.error){

@@ -49,7 +49,7 @@ class TaskList extends HTMLElement {
     });
   }
 
-  async add(task) {
+  add(task) {
     this.nbTasks += 1;
     const { shadowRoot } = this;
     shadowRoot.querySelector('.tasks-list').appendChild(task);
