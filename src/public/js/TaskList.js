@@ -28,6 +28,7 @@ class TaskList extends HTMLElement {
       <style>
         :host{
           display: block;
+          width: 100%;
         }
 
         .no-task-msg{
@@ -37,9 +38,28 @@ class TaskList extends HTMLElement {
         .tasks-list{
           display: none;
         }
-      </style>
 
-      <p class='no-task-msg'>You have no task to finish</p>
+        .no-task{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .no-task__msg{
+          font-size: 2rem;
+          color: #8D8D8D;
+        }
+
+        .no-task__illustration{
+          display: block;
+          height: 300px;
+        }
+
+      </style>
+      <div class='no-task'>
+        <p class="no-task__msg">You have no task to complete</p>
+        <img src="../images/illustration.svg" class="no-task__illustration" />
+      </div>
       <div class='tasks-list'></div>
     `;
 
@@ -67,10 +87,10 @@ class TaskList extends HTMLElement {
     const { shadowRoot } = this;
     if (this.nbTasks === 0) {
       shadowRoot.querySelector('.tasks-list').style.display = 'none';
-      shadowRoot.querySelector('.no-task-msg').style.display = 'block';
+      shadowRoot.querySelector('.no-task').style.display = 'block';
     } else {
       shadowRoot.querySelector('.tasks-list').style.display = 'block';
-      shadowRoot.querySelector('.no-task-msg').style.display = 'none';
+      shadowRoot.querySelector('.no-task').style.display = 'none';
     }
   }
 }

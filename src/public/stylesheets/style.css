@@ -309,7 +309,7 @@ html, body {
   background: rgba(31, 31, 31, 0.719);
   height: 100%;
   width: 100%;
-  display: block;
+  display: none;
 }
 
 .modal {
@@ -320,6 +320,7 @@ html, body {
   margin: 1rem auto;
   background: white;
   z-index: 2;
+  transform: translateY(-1000%);
   border-radius: 6px;
 }
 

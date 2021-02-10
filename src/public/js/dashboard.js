@@ -1,4 +1,4 @@
-import Task from 'Task.js';
+import Task from '../js/Task.js';
 const taskList = document.querySelector('tasks-list');
 const taskTitle = document.querySelector('#task-title');
 const form = document.querySelector('form');
