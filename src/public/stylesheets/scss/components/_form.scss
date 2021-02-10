@@ -1,0 +1,14 @@
+@use '../config/variables';
+
+input{
+  display: block;
+  padding: 0.5rem;
+  border-radius: variables.$radius;
+  border: 2px solid rgb(207, 207, 207);
+  outline: none;
+  width: 100%;
+
+  &:hover, &:focus, &:active{
+    border-color: black;
+  }
+}

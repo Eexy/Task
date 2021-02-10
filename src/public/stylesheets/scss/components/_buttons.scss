@@ -1,0 +1,23 @@
+@use '../config/variables';
+
+button{
+  padding: 0.5rem 0.8rem;
+  border-radius: variables.$radius;
+  border: none;
+  cursor: pointer;
+  outline: none;
+
+  &.black{
+    background: black;
+    color:white;
+
+    &:hover{
+      background-color: lighten(black, 20%);
+    }
+  }
+
+  &.white{
+    background: white;
+    color: black;
+  }
+}

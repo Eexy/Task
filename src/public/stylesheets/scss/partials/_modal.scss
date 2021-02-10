@@ -1,0 +1,35 @@
+@use '../config/variables';
+
+.overlay{
+  position: absolute;
+  background: rgba(31, 31, 31, 0.719);
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
+.modal{
+  position: absolute;
+  width: 350px;
+  left: 0;
+  right: 0;
+  margin: 1rem auto;
+  background: white;
+  z-index: 2;
+  border-radius: variables.$radius;
+}
+
+.modal__header, .modal__body, .modal__footer{
+  padding: 1rem 0.8rem;
+}
+
+.modal__footer{
+  background: rgb(245, 245, 245);
+  text-align: right;
+  border-radius: 0 0 variables.$radius variables.$radius;
+}
+
+
+.modal__title{
+  padding: 0;
+}

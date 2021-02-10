@@ -1,4 +1,14 @@
+// Config
 @use './config/reset';
 @use './config/utils';
+
+// components
+@use './components/title';
+@use './components/form';
+@use './components/buttons';
+
+// partials
 @use './partials/body';
 @use './partials/sidebar';
+@use './partials/project';
+@use './partials/modal';

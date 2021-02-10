@@ -1,14 +1,29 @@
+<div class="overlay"></div>
+<div class="modal">
+  <div class="modal__header">
+    <h2 class="modal__title">Add Task</h2>
+  </div>
+  <div class="modal__body">
+    <input type="text" name="task-title" id="task-title" class="" required placeholder="Clean room...">
+  </div>
+    <div class="modal__footer">
+      <button class="white">Close</button>
+      <button class="black">Save Task</button>
+    </div>
+</div>
 <div class="flex h-full">
   {{>sidebar}}
-  <main class="p-5">
-    <form class="flex items-center">
-      <input type="text" name="task-title" id="task-title"
-        class="py-1 mr-2 px-2 focus:ring border-solid border-gray-400 border-2 rounded block flex-grow outline-none hover:border-blue-500 focus:border-blue-500"
-        required placeholder="Clean room, Do homework...">
-      <button type="submit"
-        class="p-2 hover:bg-blue-600 rounded text-white outline-none bg-blue-700 cursor-pointer">Save
-        Task</button>
-    </form>
+  <main class="project">
+    <div class="project__info">
+      <h1 class="project__title">Dashboard</h1>
+      <div class="project__ctas">
+        <button id="create__task__btn" class="black">
+          <img src="../images/add_white.svg" alt="" class="add__icon">
+          Add Task
+        </button>
+      </div>
+    </div>
+
     <tasks-list></tasks-list>
   </main>
 </div>
@@ -16,33 +31,4 @@
 
 <script src="../js/Task.js"></script>
 <script src="../js/TaskList.js" type="module"></script>
-<script type="module">
-  import Task from '../js/Task.js';
-  const taskList = document.querySelector('tasks-list');
-  const taskTitle = document.querySelector('#task-title');
-  const form = document.querySelector('form');
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    createTask(taskTitle.value);
-  });
-
-  async function createTask(title) {
-    const params = {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ title }),
-    };
-
-    const res = await fetch('http://localhost:3000/tasks', params);
-    const json = await res.json();
-
-    if (!json.error) {
-      const task = new Task(json._id, json.title, json.completed, taskList);
-      taskList.add(task);
-    }
-  }
-</script>
+<script src="../js/dashboard.js"></script>
