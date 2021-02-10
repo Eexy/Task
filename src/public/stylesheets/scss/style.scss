@@ -1,25 +1,4 @@
-@use './partials/variables';
-@use './partials/card';
-@use './partials/form';
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body {
-  height: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.flex-wrapper {
-  display: flex;
-  padding: 1rem;
-}
-
-.flex-center {
-  align-items: center;
-  justify-content: center;
-}
+@use './config/reset';
+@use './config/utils';
+@use './partials/body';
+@use './partials/sidebar';

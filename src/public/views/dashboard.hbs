@@ -1,13 +1,18 @@
-<main class="p-5">
-  <form class="flex items-center">
-    <input type="text" name="task-title" id="task-title"
-      class="py-1 mr-2 px-2 focus:ring border-solid border-gray-400 border-2 rounded block flex-grow outline-none hover:border-blue-500 focus:border-blue-500"
-      required placeholder="Clean room, Do homework...">
-    <button type="submit" class="p-2 hover:bg-blue-600 rounded text-white outline-none bg-blue-700 cursor-pointer">Save
-      Task</button>
-  </form>
-  <tasks-list></tasks-list>
-</main>
+<div class="flex h-full">
+  {{>sidebar}}
+  <main class="p-5">
+    <form class="flex items-center">
+      <input type="text" name="task-title" id="task-title"
+        class="py-1 mr-2 px-2 focus:ring border-solid border-gray-400 border-2 rounded block flex-grow outline-none hover:border-blue-500 focus:border-blue-500"
+        required placeholder="Clean room, Do homework...">
+      <button type="submit"
+        class="p-2 hover:bg-blue-600 rounded text-white outline-none bg-blue-700 cursor-pointer">Save
+        Task</button>
+    </form>
+    <tasks-list></tasks-list>
+  </main>
+</div>
+
 
 <script src="../js/Task.js"></script>
 <script src="../js/TaskList.js" type="module"></script>

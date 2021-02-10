@@ -1,0 +1,7 @@
+@use '../config/colors';
+
+html, body{
+  height: 100%;
+  background: colors.$background-color;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
