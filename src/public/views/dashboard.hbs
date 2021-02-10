@@ -1,5 +1,5 @@
 <div class="overlay"></div>
-<div class="modal">
+<div class="modal" id="create-task-modal">
   <div class="modal__header">
     <h2 class="modal__title">Add Task</h2>
   </div>
@@ -7,7 +7,7 @@
     <input type="text" name="task-title" id="task-title" class="" required placeholder="Clean room...">
   </div>
     <div class="modal__footer">
-      <button class="white">Close</button>
+      <button data-target-type="modal" data-target-action="close" data-target="#create-task-modal" class="white">Close</button>
       <button class="black">Save Task</button>
     </div>
 </div>
@@ -17,7 +17,7 @@
     <div class="project__info">
       <h1 class="project__title">Dashboard</h1>
       <div class="project__ctas">
-        <button id="create__task__btn" class="black">
+        <button id="add__task__btn" data-target-type="modal" data-target-action="open" data-target="#create-task-modal" class="black">
           <img src="../images/add_white.svg" alt="" class="add__icon">
           Add Task
         </button>
@@ -28,7 +28,7 @@
   </main>
 </div>
 
-
+<script src="../js/modal.js"></script>
 <script src="../js/Task.js"></script>
 <script src="../js/TaskList.js" type="module"></script>
 <script src="../js/dashboard.js" type="module"></script>

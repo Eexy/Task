@@ -293,11 +293,11 @@ html, body {
   padding: 2rem 0;
 }
 
-#create__task__btn {
+#add__task__btn {
   display: flex;
   align-items: center;
 }
-#create__task__btn .add__icon {
+#add__task__btn .add__icon {
   height: 1.1rem;
   width: 1.1rem;
   margin-right: 0.5rem;
@@ -322,6 +322,7 @@ html, body {
   z-index: 2;
   transform: translateY(-1000%);
   border-radius: 6px;
+  transition: transform(0);
 }
 
 .modal__header, .modal__body, .modal__footer {

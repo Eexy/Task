@@ -18,6 +18,7 @@
   z-index: 2;
   transform: translateY(-1000%);
   border-radius: variables.$radius;
+  transition: transform(0);
 }
 
 .modal__header, .modal__body, .modal__footer{

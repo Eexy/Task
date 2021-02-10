@@ -1,4 +1,4 @@
-import Task from '../js/Task.js';
+/* import Task from '../js/Task.js';
 const taskList = document.querySelector('tasks-list');
 const taskTitle = document.querySelector('#task-title');
 const form = document.querySelector('form');
@@ -25,4 +25,4 @@ async function createTask(title) {
     const task = new Task(json._id, json.title, json.completed, taskList);
     taskList.add(task);
   }
-}
+} */
