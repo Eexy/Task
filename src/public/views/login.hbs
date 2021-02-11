@@ -4,7 +4,7 @@
     <div class="">
       <h1 class="card__title">Login</h1>
     </div>
-    <p class="error">Error: Mail or password invalid</p>
+    <p class="error hidden">Error: Mail or password invalid</p>
     <div class="">
       <form action="http://localhost:3000/users/login" method="POST" class="auth-form" autocomplete="off">
         <div class="form__row">
@@ -30,33 +30,4 @@
   </div>
 </main>
 
-<script>
-  const form = document.querySelector('form');
-  const email = document.querySelector('#email');
-  const password = document.querySelector('#pwd');
-  const error = document.querySelector('.error');
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const params = {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email: email.value, password: password.value })
-    }
-
-    fetch('http://localhost:3000/users/login', params).then((res) => {
-      return res.json();
-    }).then(res => {
-      if(!res.error){
-        window.location.href = 'http://localhost:3000/dashboard';
-      }else{
-        error.classList.remove('hidden');
-      }
-    });
-
-  })
-</script>
+<script src="../js/login.js"></script>
