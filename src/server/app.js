@@ -33,7 +33,11 @@ app.use(userRouter);
 app.use(taskRouter);
 
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Homepage', connected: false });
+  res.redirect('/users/login');
+});
+
+app.get('*', (req, res) => {
+  res.render('404', { title: 'Error' });
 });
 
 app.listen(PORT, () => {

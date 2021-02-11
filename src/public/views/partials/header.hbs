@@ -1,20 +1,14 @@
-<header class="flex py-1.5 px-3 shadow-md items-center justify-between">
+<header class="flex">
   <a href="http://localhost:3000/">
-    <img src="../../images/logo.svg" id="brand-logo " class="block h-1° w-10" />
+    <img src="../../images/logo.svg" id="brand-logo" class="" />
   </a>
-  <div class="flex items-center">
-    {{#if connected}}
-    <a href="http://localhost:3000/users/logout">
-      <button id="logout" class="p-2 hover:bg-red-500 bg-red-600 text-white rounded cursor-pointer">Logout</button>
-    </a>
-    {{else}}
-    <a href="http://localhost:3000/users/login" class="mr-2">
+  <div class="flex">
+    <a href="http://localhost:3000/users/login" class="">
       <button
-        class="p-2 hover:bg-blue-600 rounded text-white outline-none bg-blue-700 cursor-pointer">Login</button>
+        class="black">Login</button>
     </a>
-    <a href="http://localhost:3000/users/signup">
-      <button class="p-2 hover:bg-gray-600 bg-gray-800 text-white rounded cursor-pointer">Create User</button>
+    <a href="http://localhost:3000/users/signup" class="">
+      <button id="" class="white">Create User</button>
     </a>
-    {{/if}}
   </div>
 </header>

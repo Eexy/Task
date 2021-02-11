@@ -2,6 +2,15 @@
   display: flex;
 }
 
+.flex-col{
+  flex-direction: column;
+}
+
+.flex-center{
+  justify-content: center;
+  align-items: center;
+}
+
 .h-full{
   height: 100%;
 }
@@ -16,4 +25,8 @@
 
 .overflow-hidden{
   overflow: hidden;
+}
+
+.p-normal{
+  padding: 1rem;
 }

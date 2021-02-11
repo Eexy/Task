@@ -139,6 +139,15 @@ table {
   display: flex;
 }
 
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
 .h-full {
   height: 100%;
 }
@@ -153,6 +162,10 @@ table {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.p-normal {
+  padding: 1rem;
 }
 
 h1 {
@@ -193,6 +206,7 @@ button.black:hover {
 button.white {
   background: white;
   color: black;
+  box-shadow: 0 0 1px #8b8b8b;
 }
 
 html, body {
@@ -304,6 +318,19 @@ html, body {
   margin-top: -0.1rem;
 }
 
+header {
+  justify-content: space-between;
+  padding: 0.3rem 1rem;
+  align-items: center;
+  box-shadow: 0 1px 4px #a7a7a7;
+}
+
+#brand-logo {
+  display: block;
+  height: 3rem;
+  width: 3rem;
+}
+
 .overlay {
   position: absolute;
   background: rgba(31, 31, 31, 0.719);
@@ -337,6 +364,10 @@ html, body {
 
 .modal__title {
   padding: 0;
+}
+
+.error-illustration {
+  height: 300px;
 }
 
 /*# sourceMappingURL=style.css.map */
