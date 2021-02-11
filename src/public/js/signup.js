@@ -29,7 +29,7 @@ form.addEventListener('submit', (e) => {
           error.classList.remove('hidden');
           errorMsg.textContent = 'User already exist';
         } else {
-          window.location.href = 'http://localhost:3000/dashboard';
+          window.location.href = '/dashboard';
         }
       });
   }

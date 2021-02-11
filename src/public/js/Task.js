@@ -103,7 +103,7 @@ export default class Task extends HTMLElement {
       </style>
         <div class='checkbox'>
           <label for="completed-box">
-            <div class="checkbox__btn">
+            <div class="checkbox__btn ${(this.isCompleted) ? 'ckeck__box-completed' : ''}">
             </div>
           </label>
           <input id="completed-box" type='checkbox' ${
