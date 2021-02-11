@@ -15,11 +15,11 @@ form.addEventListener('submit', (e) => {
     body: JSON.stringify({ email: email.value, password: password.value }),
   };
 
-  fetch('http://localhost:3000/users/login', params)
+  fetch('/users/login', params)
     .then((res) => res.json())
     .then((res) => {
       if (!res.error) {
-        window.location.href = 'http://localhost:3000/dashboard';
+        window.location.href = '/dashboard';
       } else {
         error.classList.remove('hidden');
       }

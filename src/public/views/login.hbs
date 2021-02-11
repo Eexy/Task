@@ -6,7 +6,7 @@
     </div>
     <p class="error hidden">Error: Mail or password invalid</p>
     <div class="">
-      <form action="http://localhost:3000/users/login" method="POST" class="auth-form" autocomplete="off">
+      <form action="/users/login" method="POST" class="auth-form" autocomplete="off">
         <div class="form__row">
           <label for="email" class="">Mail :</label>
           <input type="email" name="email" id="email"
@@ -22,7 +22,7 @@
         <button type="submit" id="login-btn"
           class="black w-full">Login</button>
       </form>
-      <a href="http://localhost:3000/users/signup">
+      <a href="/users/signup">
         <button id="create-user-btn"
           class="white w-full">Create User</button>
       </a>

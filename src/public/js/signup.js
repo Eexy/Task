@@ -22,7 +22,7 @@ form.addEventListener('submit', (e) => {
       body: JSON.stringify({ email: mail, password }),
     };
 
-    fetch('http://localhost:3000/users/signup', params)
+    fetch('/users/signup', params)
       .then((res) => res.json())
       .then((res) => {
         if (res.error) {

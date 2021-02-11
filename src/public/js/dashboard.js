@@ -14,7 +14,7 @@ async function createTask(title) {
     body: JSON.stringify({ title }),
   };
 
-  const res = await fetch('http://localhost:3000/tasks', params);
+  const res = await fetch('/tasks', params);
   const json = await res.json();
 
   if (!json.error) {

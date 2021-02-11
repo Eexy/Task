@@ -13,7 +13,7 @@ class TaskList extends HTMLElement {
   }
 
   async fetchTask() {
-    const res = await fetch('http://localhost:3000/tasks');
+    const res = await fetch('/tasks');
     const json = await res.json();
 
     json.forEach((task) => {
