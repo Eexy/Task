@@ -23,9 +23,7 @@ form.addEventListener('submit', (e) => {
     };
 
     fetch('/users/signup', params)
-      .then((res) => {
-        return res.json();
-      })
+      .then((res) => res.json())
       .then((res) => {
         if (res.error) {
           error.classList.remove('hidden');
