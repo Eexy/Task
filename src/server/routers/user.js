@@ -39,7 +39,7 @@ router.get('/users/logout', auth, async (req, res) => {
     user.tokens = [];
     await user.save();
     res.clearCookie('jwt');
-    res.send({ message: 'Log out successful' });
+    res.redirect('/users/login');
   } catch (e) {
     res.status(401).send({ error: 'you need to be connected before' });
   }

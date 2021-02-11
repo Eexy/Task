@@ -12,3 +12,14 @@ input{
     border-color: black;
   }
 }
+
+.error{
+  border-radius: variables.$radius;
+  color:white;
+  padding: 0.5rem;
+  background: rgba(228, 48, 48, 0.938);
+}
+
+.form__row{
+  padding: 1rem 0;
+}

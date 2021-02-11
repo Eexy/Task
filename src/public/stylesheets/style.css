@@ -139,6 +139,10 @@ table {
   display: flex;
 }
 
+.shadow {
+  box-shadow: 0 0 3px #8b8b8b;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -148,6 +152,10 @@ table {
   justify-items: center;
   align-items: center;
   align-content: center;
+}
+
+.rounded {
+  border-radius: 6px;
 }
 
 .h-full {
@@ -189,6 +197,17 @@ input {
 }
 input:hover, input:focus, input:active {
   border-color: black;
+}
+
+.error {
+  border-radius: 6px;
+  color: white;
+  padding: 0.5rem;
+  background: rgba(228, 48, 48, 0.938);
+}
+
+.form__row {
+  padding: 1rem 0;
 }
 
 button {
@@ -331,6 +350,18 @@ header {
   display: block;
   height: 3rem;
   width: 3rem;
+}
+
+.card {
+  width: 300px;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 0 0 3px #8b8b8b;
+  border-radius: 6px;
+}
+
+.card__title {
+  padding: 1rem 0;
 }
 
 .overlay {

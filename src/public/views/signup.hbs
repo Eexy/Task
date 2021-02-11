@@ -1,32 +1,33 @@
-<main class="p-3">
-  <div class="rounded flex shadow-xl flex-col p-4 w-3/5 mx-auto">
+{{>header}}
+<main class="flex flex-center">
+  <div class="card">
     <div class="">
-      <h1 class="text-4xl text-gray-900">Create Account</h1>
+      <h1 class="card__title">Create Account</h1>
     </div>
     <div class="">
-      <p class="error p-2 hidden text-red-900 bg-red-300 rounded">Error: <span class="error-msg"></span></p>
+      <p class="error hidden">Error: <span class="error-msg"></span></p>
       <form action="" method="POST" class="auth-form">
-        <div class="py-1.5">
+        <div class="form__row">
           <label for="email" class="block pb-1.5">Mail :</label>
           <input type="email" name="email" id="email" minlength="8"
-            class="outline-none focus:ring w-full py-1 px-2 border-solid border-gray-400 border-2 rounded block focus:border-blue-500 hover:border-blue-500"
+            class=""
             placeholder="Enter your email" required>
         </div>
-        <div class="py-1.5">
+        <div class="form__row">
           <label for="pwd" class="block pb-1.5">Password :</label>
           <input type="password" name="password" id="pwd" minlength="8"
-            class="outline-none focus:ring my-1.5 w-full py-1 px-2 border-solid border-gray-400 border-2 rounded block focus:border-blue-500 hover:border-blue-500"
+            class=""
             placeholder="Enter your password" required>
           
         </div>
-        <div>
+        <div class="form__row">
           <label for="pwd" class="block pb-1.5">Password :</label>
           <input type="password" name="password" id="verif-pwd" minlength="8"
-            class="outline-none focus:ring w-full py-1 px-2 border-solid border-gray-400 border-2 rounded block focus:border-blue-500 hover:border-blue-500"
+            class=""
             placeholder="Enter your password agin" required>
         </div>
         <button type="submit" id="login-btn"
-          class="p-2 hover:bg-blue-600 rounded w-full text-white outline-none bg-blue-700 my-2 cursor-pointer">Create
+          class="black w-full">Create
           Account</button>
       </form>
     </div>

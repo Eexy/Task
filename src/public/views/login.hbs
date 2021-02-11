@@ -1,29 +1,30 @@
-<main class="p-3">
-  <div class="rounded flex shadow-xl flex-col p-4 w-3/5 mx-auto">
-    <div class=" py-3">
-      <h1 class="text-4xl text-gray-900">Login</h1>
+{{>header}}
+<main class="flex flex-col flex-center">
+  <div class="card">
+    <div class="">
+      <h1 class="card__title">Login</h1>
     </div>
-    <p class="error p-2 hidden text-red-900 bg-red-300 rounded">Error: Mail or password invalid</p>
+    <p class="error">Error: Mail or password invalid</p>
     <div class="">
       <form action="http://localhost:3000/users/login" method="POST" class="auth-form" autocomplete="off">
-        <div class="py-1.5">
-          <label for="email" class="block pb-1.5">Mail :</label>
+        <div class="form__row">
+          <label for="email" class="">Mail :</label>
           <input type="email" name="email" id="email"
-            class="outline-none focus:ring w-full py-1 px-2 border-solid border-gray-400 border-2 rounded block focus:border-blue-500 hover:border-blue-500"
+            class=""
             placeholder="Enter your email" autocomplete="off" required>
         </div>
-        <div class="py-1.5">
-          <label for="pwd" class="block pb-1.5">Password :</label>
+        <div class="form__row">
+          <label for="pwd" class="">Password :</label>
           <input type="password" name="password" id="pwd"
-            class="py-1 px-2 focus:ring border-solid border-gray-400 border-2 rounded block w-full outline-none hover:border-blue-500 focus:border-blue-500"
+            class=""
             placeholder="Enter your password" required>
         </div>
         <button type="submit" id="login-btn"
-          class="p-2 hover:bg-blue-600 rounded w-full text-white outline-none bg-blue-700 my-2 cursor-pointer">Login</button>
+          class="black w-full">Login</button>
       </form>
       <a href="http://localhost:3000/users/signup">
         <button id="create-user-btn"
-          class="p-2 hover:bg-gray-600 bg-gray-800 w-full text-white rounded cursor-pointer">Create User</button>
+          class="white w-full">Create User</button>
       </a>
     </div>
   </div>

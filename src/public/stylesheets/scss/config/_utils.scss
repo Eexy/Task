@@ -1,5 +1,11 @@
+@use './variables';
+
 .flex{
   display: flex;
+}
+
+.shadow{
+  box-shadow: 0 0 3px rgb(139, 139, 139);
 }
 
 .flex-col{
@@ -11,6 +17,10 @@
   justify-items: center;
   align-items: center;
   align-content: center;
+}
+
+.rounded{
+  border-radius: variables.$radius;
 }
 
 .h-full{

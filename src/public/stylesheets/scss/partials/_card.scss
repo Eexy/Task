@@ -1,0 +1,13 @@
+@use '../config/variables';
+
+.card{
+  width: 300px;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 0 0 3px rgb(139, 139, 139);
+  border-radius: variables.$radius;
+}
+
+.card__title{
+  padding: 1rem 0;
+}
