@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-mongoose.connect('mongodb://127.0.0.1:27017/tasks', {
+mongoose.connect(`mongodb+srv://taskapp:${process.env.CLUSTER}@kha.1znlw.mongodb.net/${process.send.DBNAME}?retryWrites=true&w=majority`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
