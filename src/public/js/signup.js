@@ -23,13 +23,15 @@ form.addEventListener('submit', (e) => {
     };
 
     fetch('/users/signup', params)
-      .then((res) => res.json())
+      .then((res) => {
+        console.log('here');
+        return res.json();
+      })
       .then((res) => {
         if (res.error) {
           error.classList.remove('hidden');
           errorMsg.textContent = 'User already exist';
         } else {
-          console.log("here")
           window.location.href = '/dashboard';
         }
       });
