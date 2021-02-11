@@ -26,11 +26,11 @@ form.addEventListener('submit', (e) => {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        if (res.error) {
+        if (res.user) {
+          window.location.href = '/dashboard';
+        } else {
           error.classList.remove('hidden');
           errorMsg.textContent = 'User already exist';
-        } else {
-          window.location.href = '/dashboard';
         }
       });
   }
