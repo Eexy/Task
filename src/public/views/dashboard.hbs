@@ -4,11 +4,13 @@
     <h2 class="modal__title">Add Task</h2>
   </div>
   <div class="modal__body">
-    <input type="text" name="task-title" id="task-title" class="" required placeholder="Clean room...">
+    <form id="createTaskForm" action="">
+      <input type="text" name="task-title" id="task-title" class="" required placeholder="Clean room...">
+    </form>
   </div>
     <div class="modal__footer">
       <button data-target-type="modal" data-target-action="close" data-target="#create-task-modal" class="white">Close</button>
-      <button class="black">Save Task</button>
+      <button type="submit" form="createTaskForm" class="black">Save Task</button>
     </div>
 </div>
 <div class="flex h-full">
@@ -29,6 +31,5 @@
 </div>
 
 <script src="../js/modal.js"></script>
-<script src="../js/Task.js"></script>
 <script src="../js/TaskList.js" type="module"></script>
 <script src="../js/dashboard.js" type="module"></script>
