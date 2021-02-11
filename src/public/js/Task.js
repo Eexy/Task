@@ -130,7 +130,7 @@ export default class Task extends HTMLElement {
       },
       body: JSON.stringify({ completed: !this.isCompleted }),
     };
-    const res = await fetch(`http://localhost:3000/tasks/${this.id}`, params);
+    const res = await fetch(`/tasks/${this.id}`, params);
     const json = await res.json();
 
     if (!json.error) {
@@ -145,7 +145,7 @@ export default class Task extends HTMLElement {
   }
 
   async delete() {
-    const res = await fetch(`http://localhost:3000/tasks/${this.id}`, {
+    const res = await fetch(`/tasks/${this.id}`, {
       method: 'DELETE',
     });
     const json = await res.json();
