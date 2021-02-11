@@ -145,7 +145,9 @@ table {
 
 .flex-center {
   justify-content: center;
+  justify-items: center;
   align-items: center;
+  align-content: center;
 }
 
 .h-full {
@@ -367,6 +369,8 @@ header {
 }
 
 .error-illustration {
+  display: block;
+  margin: 2rem auto;
   height: 300px;
 }
 
