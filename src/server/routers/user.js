@@ -53,7 +53,9 @@ router.post('/users/signup', async (req, res) => {
   let user = null;
   try {
     user = await User.findOne({ email: req.body.email });
-  } catch (e) {}
+  } catch (e) {
+    res.send({ e });
+  }
 
   if (user != null) {
     return res.send({ error: 'User already exist' });
