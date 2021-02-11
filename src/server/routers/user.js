@@ -51,16 +51,17 @@ router.get('/users/signup', (req, res) => {
 
 router.post('/users/signup', async (req, res) => {
   let user = null;
-  user = await User.findOne({ email: req.body.email });
 
-  if (user != null) {
+  try {
+    user = await User.findOne({ email: req.body.email });
+
     return res.send({ error: 'User already exist' });
+  } catch (e) {
+    user = new User(req.body);
+    const token = await user.generateAuthToken();
+    res.cookie('jwt', token, { httpOnly: true, maxAge: 9000000000 });
+    res.send(user);
   }
-
-  user = new User(req.body);
-  const token = await user.generateAuthToken();
-  res.cookie('jwt', token, { httpOnly: true, maxAge: 9000000000 });
-  res.send(user);
 });
 
 router.get('/dashboard', auth, (req, res) => {
