@@ -24,7 +24,7 @@ form.addEventListener('submit', (e) => {
 
     fetch('/users/signup', params)
       .then((res) => {
-        console.log('here');
+        console.log(res);
         return res.json();
       })
       .then((res) => {
