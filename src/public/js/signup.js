@@ -25,7 +25,6 @@ form.addEventListener('submit', (e) => {
     fetch('/users/signup', params)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         if (res.user) {
           window.location.href = '/dashboard';
         } else {
