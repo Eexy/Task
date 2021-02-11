@@ -53,7 +53,7 @@ router.post('/users/signup', async (req, res) => {
   let user = null;
   try {
     user = await User.findOne({ email: req.body.email });
-    return res.send({ error: 'user already exist' });
+    res.send({ error: 'user already exist' });
   } catch (e) {
     user = new User(req.body);
     const token = await user.generateAuthToken();
