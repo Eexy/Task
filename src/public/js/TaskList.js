@@ -4,12 +4,10 @@ class TaskList extends HTMLElement {
   constructor() {
     super();
     this.nbTasks = null;
-    this.tasksList = [];
     this.attachShadow({ mode: 'open' });
   }
 
   async connectedCallback() {
-    await this.fetchTask();
     this.render();
     this.nbTasks = 0;
   }
@@ -18,7 +16,10 @@ class TaskList extends HTMLElement {
     const res = await fetch('http://localhost:3000/tasks');
     const json = await res.json();
 
-    this.tasksList = json;
+    json.forEach((task) => {
+      const temp = new Task(task._id, task.title, task.completed, this);
+      this.add(temp);
+    });
   }
 
   render() {
@@ -43,6 +44,7 @@ class TaskList extends HTMLElement {
           display: flex;
           flex-direction: column;
           align-items: center;
+          width: 100%;
         }
 
         .no-task__msg{
@@ -61,12 +63,8 @@ class TaskList extends HTMLElement {
         <img src="../images/illustration.svg" class="no-task__illustration" />
       </div>
       <div class='tasks-list'></div>
-    `;
-
-    this.tasksList.forEach((task) => {
-      const temp = new Task(task._id, task.title, task.completed, this);
-      this.add(temp);
-    });
+      `;
+    this.fetchTask();
   }
 
   add(task) {
@@ -87,7 +85,7 @@ class TaskList extends HTMLElement {
     const { shadowRoot } = this;
     if (this.nbTasks === 0) {
       shadowRoot.querySelector('.tasks-list').style.display = 'none';
-      shadowRoot.querySelector('.no-task').style.display = 'block';
+      shadowRoot.querySelector('.no-task').style.display = 'flex';
     } else {
       shadowRoot.querySelector('.tasks-list').style.display = 'block';
       shadowRoot.querySelector('.no-task').style.display = 'none';

@@ -39,10 +39,9 @@ export default class Task extends HTMLElement {
         :host{
           display: flex;
           align-items: center;
-          padding: 0.5rem 1rem;
-          margin: 1rem 0!important;
-          border-radius: 3px;
+          padding: 0.7rem 1rem;
           background: white;
+          border-top: 1px solid black;
         }
 
         .checkbox {
@@ -76,24 +75,48 @@ export default class Task extends HTMLElement {
           text-transform: capitalize;
         }
 
-        .urgent{
-          background: rgba(250, 37, 37, 0.50);
-          color: white;
+        input[type='checkbox']{
+          display: none;
         }
 
-        .normal{
-          background: rgba(247, 216, 43, 0.50);
-          color: white;
+        .checkbox__btn{
+          height: 1rem;
+          width: 1rem;
+          border-radius: 50%;
+          border: 1px solid rgb(207, 207, 207);
+          cursor: pointer;
+
         }
+
+        .checkbox__btn-completed{
+          background: black;
+          display: flex;
+          align-items:center;
+        }
+
+        .checkbox__btn-completed:after{
+          content: '\u2713';
+          color: white;
+          display: block;
+        }
+
       </style>
         <div class='checkbox'>
-          <input type='checkbox' ${((this.isCompleted) ? 'checked' : '')}>
+          <label for="completed-box">
+            <div class="checkbox__btn">
+            </div>
+          </label>
+          <input id="completed-box" type='checkbox' ${
+            this.isCompleted ? 'checked' : ''
+          }>
         </div>
         <h3 class='task-title'>${this.title}</h3>
         <button class='delete-btn'>Delete</button>
     `;
 
-    shadowRoot.querySelector('input').addEventListener('click', this.complete);
+    shadowRoot
+      .querySelector('label')
+      .addEventListener('click', this.complete);
     shadowRoot
       .querySelector('.delete-btn')
       .addEventListener('click', this.delete);
@@ -112,6 +135,12 @@ export default class Task extends HTMLElement {
 
     if (!json.error) {
       this.isCompleted = !this.isCompleted;
+      const { shadowRoot } = this;
+      if (this.isCompleted) {
+        shadowRoot.querySelector('.checkbox__btn').classList.add('checkbox__btn-completed');
+      } else {
+        shadowRoot.querySelector('.checkbox__btn').classList.remove('checkbox__btn-completed');
+      }
     }
   }
 
