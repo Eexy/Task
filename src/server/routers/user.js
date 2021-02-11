@@ -62,7 +62,9 @@ router.post('/users/signup', async (req, res) => {
       return res.send(user);
     }
     return res.send({ error: 'User already exist' });
-  } catch (e) {}
+  } catch (e) {
+    res.send({ e });
+  }
 });
 
 router.get('/dashboard', auth, (req, res) => {
