@@ -54,7 +54,7 @@ router.post('/users/signup', async (req, res) => {
   try {
     user = await User.findOne({ email: req.body.email });
   } catch (e) {
-    res.send({ e });
+    res.send(e);
   }
 
   if (user != null) {
