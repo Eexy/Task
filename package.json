@@ -4,6 +4,7 @@
   "description": "- [ ] create custom web components\r - [ ] add priority level\r - [ ] add date picker\r - [ ] search in created task\r - [ ] add the possibility to create project\r - [ ] create better design\r - [ ] deploy on heroku",
   "main": "index.js",
   "scripts": {
+    "start": "node src/server/app.js",
     "test": "nodemon src/server/app.js"
   },
   "repository": {

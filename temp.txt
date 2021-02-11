@@ -1,7 +1,0 @@
-routes :
-
-  - login
-    - GET : renvoyer le formulaire
-    - POST :
-        verifie si l'utilisateur existe dans la base de donnée (fetch) -> creer une route pour la recherche d'un utilisateur
-        sinon se connecter
