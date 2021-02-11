@@ -6,6 +6,7 @@ const error = document.querySelector('.error');
 const errorMsg = document.querySelector('.error-msg');
 
 form.addEventListener('submit', (e) => {
+  console.log('here');
   e.preventDefault();
   const mail = email.value;
   const password = firstPassword.value;
