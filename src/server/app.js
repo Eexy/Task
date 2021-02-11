@@ -10,7 +10,7 @@ const taskRouter = require('./routers/tasks');
 require('./database/db');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 // set views and partials path
 const viewsPath = path.join(__dirname, '../public/views');
