@@ -103,7 +103,7 @@ export default class Task extends HTMLElement {
       </style>
         <div class='checkbox'>
           <label for="completed-box">
-            <div class="checkbox__btn ${(this.isCompleted) ? 'ckeck__box-completed' : ''}">
+            <div class="checkbox__btn">
             </div>
           </label>
           <input id="completed-box" type='checkbox' ${
@@ -114,12 +114,16 @@ export default class Task extends HTMLElement {
         <button class='delete-btn'>Delete</button>
     `;
 
-    shadowRoot
-      .querySelector('label')
-      .addEventListener('click', this.complete);
+    shadowRoot.querySelector('label').addEventListener('click', this.complete);
     shadowRoot
       .querySelector('.delete-btn')
       .addEventListener('click', this.delete);
+
+    if (this.isCompleted) {
+      shadowRoot
+        .querySelector('.checkbox__btn')
+        .classList.add('checkbox__btn-completed');
+    }
   }
 
   async complete() {
@@ -137,9 +141,13 @@ export default class Task extends HTMLElement {
       this.isCompleted = !this.isCompleted;
       const { shadowRoot } = this;
       if (this.isCompleted) {
-        shadowRoot.querySelector('.checkbox__btn').classList.add('checkbox__btn-completed');
+        shadowRoot
+          .querySelector('.checkbox__btn')
+          .classList.add('checkbox__btn-completed');
       } else {
-        shadowRoot.querySelector('.checkbox__btn').classList.remove('checkbox__btn-completed');
+        shadowRoot
+          .querySelector('.checkbox__btn')
+          .classList.remove('checkbox__btn-completed');
       }
     }
   }
